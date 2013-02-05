@@ -1,21 +1,43 @@
-Squiz Matrix File Upload Plugin
+Squiz Matrix Multiple File Upload Plugin
 =============
 
 Sick and tired of only being able to upload 1 file at a time using an Asset Builder in Squiz Matrix? With this plugin, you get Facebook style multiple file upload capabilities!
 
-![Mat](http://f.cl.ly/items/0f121Q261c1S421m343y/matrix-upload.jpg "ZSPinAnnotation")
+![Mat](http://f.cl.ly/items/0f121Q261c1S421m343y/matrix-upload.jpg "Matrix Upload")
 
 How It Works
 ---
 
-Use jQuery to target a blank div, in this example we use #upload:
+**Upload the required files somewhere within your Squiz Matrix installation**
+
+ - jquery.matrixMultiFileUpload.js 
+ - swfupload.swf 
+ - upload.png (Or your own
+   upload button image)
+
+**Create Assets**
+
+ - Create a Standard Page asset
+ - Create an Asset Builder
+ - Configure asset builder to create images and set the create location to where ever you want the images uploaded. (This can also be dynamic)
+ - Make the Asset Builder Live and give it Public Read permissions. (You can use the logged in body copy to prevent the public from using the asset builder)
+ - Add `<div id="created">%created_asset_url%</div>` to the Created bodycopy of the Asset Builder.
+
+**Standard Page**
+
+Make sure to use `script` tags and include jQuery then the `jquery.matrixMultiFileUpload.js` file:
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="path/to/jquery.matrixMultiFileUpload.js"></script>
+
+Add the following code to the Standard Page asset that we created inside of a RAW HTML div:
 
 ```javascript
 $(function(){
   
 	// Add the uploader
 	$('#upload').matrixMultiFileUpload({
-		assetId: 			'103593',// Asset ID of the Asset Builder that will create the Image
+		assetBuilderId: 	'103593',// Asset ID of the Asset Builder that will create the Image
 		assetBuilderUrl: 	'%globals_asset_url:103593%',// Asset Builder URL
 		swfUrl: 			'%globals_asset_url:103611%',// URL to SWFUpload file
 		buttonImageUrl: 	'%globals_asset_url:56731%'// URL to the upload button image
@@ -23,3 +45,7 @@ $(function(){
 	
 });
 ```
+
+**Preview**
+
+Preview the Standard Page and you should see the upload button. Click this and then you can select multiple image files (holding down shift) and upload them!
