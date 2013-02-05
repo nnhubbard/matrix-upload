@@ -27,7 +27,7 @@ Standard Page
 
 Make sure to use `script` tags for jQuery and `jquery.matrixMultiFileUpload.js` and then insert the `matrixMultiFileUpload` function:
 
-```javascript
+```
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="path/to/jquery.matrixMultiFileUpload.js"></script>
 <script type="text/javascript">
