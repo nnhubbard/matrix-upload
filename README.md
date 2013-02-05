@@ -25,14 +25,12 @@ Create Assets
 Standard Page
 ---
 
-Make sure to use `script` tags and include jQuery then the `jquery.matrixMultiFileUpload.js` file:
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="path/to/jquery.matrixMultiFileUpload.js"></script>
-
-Add the following code to the Standard Page asset that we created inside of a RAW HTML div:
+Make sure to use `script` tags for jQuery and `jquery.matrixMultiFileUpload.js` and then insert the `matrixMultiFileUpload` function:
 
 ```javascript
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="path/to/jquery.matrixMultiFileUpload.js"></script>
+<script type="text/javascript">
 $(function(){
   
 	// Add the uploader
@@ -44,6 +42,8 @@ $(function(){
 	});
 	
 });
+</script>
+<div id="upload"></div>
 ```
 
 Preview
