@@ -5,17 +5,16 @@ Sick and tired of only being able to upload 1 file at a time using an Asset Buil
 
 ![Mat](http://f.cl.ly/items/0f121Q261c1S421m343y/matrix-upload.jpg "Matrix Upload")
 
-How It Works
+Upload Files
 ---
-
-**Upload the required files somewhere within your Squiz Matrix installation**
 
  - jquery.matrixMultiFileUpload.js 
  - swfupload.swf 
  - upload.png (Or your own
    upload button image)
 
-**Create Assets**
+Create Assets
+---
 
  - Create a Standard Page asset
  - Create an Asset Builder
@@ -23,7 +22,8 @@ How It Works
  - Make the Asset Builder Live and give it Public Read permissions. (You can use the logged in body copy to prevent the public from using the asset builder)
  - Add `<div id="created">%created_asset_url%</div>` to the Created bodycopy of the Asset Builder.
 
-**Standard Page**
+Standard Page
+---
 
 Make sure to use `script` tags and include jQuery then the `jquery.matrixMultiFileUpload.js` file:
 
@@ -46,6 +46,7 @@ $(function(){
 });
 ```
 
-**Preview**
+Preview
+---
 
 Preview the Standard Page and you should see the upload button. Click this and then you can select multiple image files (holding down shift) and upload them!
