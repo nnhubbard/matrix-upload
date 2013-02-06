@@ -1069,6 +1069,7 @@ SWFUpload.Console.writeLine = function (message) {
 			buttonImageUrl: 	'',
 			buttonWidth: 		66,
 			buttonHeight: 		22,
+			debug:				false,
 			uploadSucess: 		function () {}
 		};
 	
@@ -1114,18 +1115,23 @@ SWFUpload.Console.writeLine = function (message) {
 				fileQueued: function(event, file){
 					
 					// Add a blank image box
-					h.append('<div id="item'+a+'" style="float:left; padding:6px; width:'+boxWidth+'px"><div class="imageHolder" style="height:120px; width:'+boxWidth+'px; overflow:hidden;"></div></div>');
+					if (defaults.assetType == 'image') {
+						h.append('<div id="item'+a+'" style="float:left; padding:6px; width:'+boxWidth+'px"><div class="imageHolder" style="height:120px; width:'+boxWidth+'px; overflow:hidden;"></div></div>');
+					} else {
+						h.append('<div id="item'+a+'" style="padding:6px;"><span>'+file.name+'</span></div>');	
+					}
 					
 					// Create the upload elements
 					var imageItem = $('#item'+a);
-					imageItem.append('<div class="barHold" style="height: 10px; width: '+boxWidth+'px; background-color: #fff; border:1px solid #a4a4a4; margin: 2px 0;"><div class="progress" style="height: 10px; width: 0%; background-color: #6d84b4;"></div></div>');
+					var widthOfImage = defaults.assetTYpe == 'image' ? 'width: '+boxWidth+'px;' : '';
+					imageItem.append('<div class="barHold" style="height: 10px; '+widthOfImage+' background-color: #fff; border:1px solid #a4a4a4; margin: 2px 0;"><div class="progress" style="height: 10px; width: 0%; background-color: #6d84b4;"></div></div>');
 					a++;
 					
 					// Start the upload
 					$(this).swfupload('startUpload');
 				},
 				fileQueueError: function(event, file, errorCode, message){
-					$('.log', this).append('<li>File queue error - '+message+'</li>');
+					if (defaults.debug) $('.log', this).append('<li>File queue error - '+message+'</li>');
 				},
 				fileDialogStart: function(event){
 				},
@@ -1144,17 +1150,24 @@ SWFUpload.Console.writeLine = function (message) {
 					// Progress selector
 					var p = '#item'+i+' .progress';
 					var percent = parseInt(100 / file.size * bytesLoaded);
+					if (defaults.debug) $('.log', this).append('<li>'+percent+'</li>');
 					$(p).css('width', percent + '%');
 					
 				},
 				uploadSuccess: function(event, file, serverData){
-					// Find the server data image url
-					var url = $('<div>'+serverData+'</div>').find('#created').text();
-					//$('.log', this).append('<li>'+url+': file '+file.name+' index: '+i+'</li>');
-					// Create an image
-					var sel = '#item'+i+' div.imageHolder';
-					//console.log(sel);
-					$(sel).html('<img style="height:auto; width:'+boxWidth+'px;" src="'+url+'" />');
+					
+					if (defaults.debug) $('.log', this).append('<li>'+file.name+' index: '+i+'</li>');
+					
+					if (defaults.assetType == 'image') {
+						
+						// Find the server data image url
+						var url = $('<div>'+serverData+'</div>').find('#created').text();
+						
+						// Create an image
+						var sel = '#item'+i+' div.imageHolder';
+						//console.log(sel);
+						$(sel).html('<img style="height:auto; width:'+boxWidth+'px;" src="'+url+'" />');	
+					}
 					
 					// If we are not done, just make it 100%
 					// Progress selector
@@ -1177,7 +1190,7 @@ SWFUpload.Console.writeLine = function (message) {
 		
 				},
 				uploadError: function(event, file, errorCode, message){
-					$('.log', this).append('<li>Upload error - '+message+' code: '+errorCode+'</li>');
+					if (defaults.debug) $('.log', this).append('<li>Upload error - '+message+' code: '+errorCode+'</li>');
 				}
 			}; 
 		
@@ -1198,7 +1211,7 @@ SWFUpload.Console.writeLine = function (message) {
 			
 			// Create the swf object
 			$(this).swfupload({
-				file_post_name: 'image_0',
+				file_post_name: defaults.assetType+'_0',
 				post_params : params,
 				upload_url: defaults.assetBuilderUrl,
 				file_size_limit : "110240",
