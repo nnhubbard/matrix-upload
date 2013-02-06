@@ -3,7 +3,7 @@ Squiz Matrix Multiple File Upload Plugin
 
 Sick and tired of only being able to upload 1 file at a time using an Asset Builder in Squiz Matrix? With this plugin, you get Facebook style multiple file upload capabilities!
 
-![Mat](http://f.cl.ly/items/0f121Q261c1S421m343y/matrix-upload.jpg "Matrix Upload")
+![Mat](http://f.cl.ly/items/2m2Q1V0g0W3D1Z1n091F/Screen%20Shot%202013-02-06%20at%2011.27.44%20AM.png "Matrix Upload")
 ![Mat2](http://f.cl.ly/items/120K0F2v1T0q1V1e0s3w/Screen%20Shot%202013-02-06%20at%2011.20.15%20AM.png "File Upload")
 
 Upload Files
