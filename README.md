@@ -18,9 +18,9 @@ Create Assets
 
  - Create a Standard Page asset
  - Create an Asset Builder
- - Configure asset builder to create images and set the create location to where ever you want the images uploaded. (This can also be dynamic)
+ - Configure asset builder to create your file type and set the create location to where ever you want the files uploaded. (This can also be dynamic)
  - Make the Asset Builder Live and give it Public Read permissions. (You can use the logged in body copy to prevent the public from using the asset builder)
- - Add `<div id="created">%created_asset_url%</div>` to the Created bodycopy of the Asset Builder.
+ - Add `<div id="created">%created_asset_url%</div>` to the Created bodycopy of the Asset Builder. (If you are uploading images)
 
 Standard Page
 ---
@@ -35,10 +35,11 @@ $(function(){
   
 	// Add the uploader
 	$('#upload').matrixMultiFileUpload({
-		assetBuilderId: 	'103593',// Asset ID of the Asset Builder that will create the Image
+		assetBuilderId: 	'103593',// Asset ID of the Asset Builder that will create the file
 		assetBuilderUrl: 	'%globals_asset_url:103593%',// Asset Builder URL
 		swfUrl: 			'%globals_asset_url:103611%',// URL to SWFUpload file
-		buttonImageUrl: 	'%globals_asset_url:56731%'// URL to the upload button image
+		buttonImageUrl: 	'%globals_asset_url:56731%',// URL to the upload button image
+		assetType:			'pdf_file'// Optional parameter for file type, defaults to image
 	});
 	
 });
@@ -49,4 +50,4 @@ $(function(){
 Preview
 ---
 
-Preview the Standard Page and you should see the upload button. Click this and then you can select multiple image files (holding down shift) and upload them!
+Preview the Standard Page and you should see the upload button. Click this and then you can select multiple files (holding down shift) and upload them!
