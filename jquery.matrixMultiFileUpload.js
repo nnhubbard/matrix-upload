@@ -1127,7 +1127,7 @@ SWFUpload.Console.writeLine = function (message) {
 					var heightOfProgress = defaults.assetType == 'image' ? '10' : '18';
 					var heightOfPadding = defaults.assetType == 'image' ? 'padding-left: 4px;' : '';
 					var background = 'background: #7abcff; background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); background: -o-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); background: -ms-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#7abcff\', endColorstr=\'#4096ee\',GradientType=0 );';
-					imageItem.append('<div class="barHold" style="height: '+heightOfProgress+'px; '+widthOfImage+' background-color: #fff; border:1px solid #a4a4a4; margin: 2px 0;"><div class="progress" style="height: '+heightOfProgress+'px; width: 0%; '+background+' '+heightOfPadding+'"><span style="color:#fff; padding-left: 4px;" class="fileSize"></span></div></div><span class="currentSize"></span>');
+					imageItem.append('<div class="barHold" style="height: '+heightOfProgress+'px; '+widthOfImage+' background-color: #fff; border:1px solid #a4a4a4; margin: 2px 0;"><div class="progress" style="height: '+heightOfProgress+'px; width: 0%; '+background+'"><span style="color:#fff; padding-left: 4px;" class="fileSize"></span></div></div><span class="currentSize"></span>');
 					a++;
 					
 					// Start the upload
