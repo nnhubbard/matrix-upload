@@ -1153,6 +1153,8 @@ SWFUpload.Console.writeLine = function (message) {
 					// Progress selector
 					var p = '#item'+i+' .progress';
 					var percent = parseFloat(100 / file.size * bytesLoaded);
+					// especially with small files the bytesLoaded can wildly exceed the file.size, so just cap percent at 100
+					percent = Math.min(100, percent);
 					if (defaults.debug) $('.log', this).append('<li>'+percent+'</li>');
 					$(p).css('width', percent + '%');
 					if (defaults.assetType != 'image') {
