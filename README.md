@@ -21,7 +21,8 @@ Create Assets
  - Create an Asset Builder
  - Configure asset builder to create your file type and set the create location to where ever you want the files uploaded. (This can also be dynamic)
  - Make the Asset Builder Live and give it Public Read permissions. (You can use the logged in body copy to prevent the public from using the asset builder)
- - Add `<div id="created">%created_asset_url%</div>` to the Created bodycopy of the Asset Builder. (If you are uploading images)
+ - Add `<div id="created">%created_asset_url%</div>` to the `Created` bodycopy of the Asset Builder. (If you are uploading images)
+ - Add `<div id="upload-errors">%create_error%</div>` to the `Logged in` bodycopy to catch and display errors from Matrix (mainly caused by problems)
 
 Standard Page
 ---

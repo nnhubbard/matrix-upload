@@ -1069,6 +1069,7 @@ SWFUpload.Console.writeLine = function (message) {
 			buttonImageUrl: 	'',
 			buttonWidth: 		66,
 			buttonHeight: 		22,
+			errorsSelector:     '#upload-errors',
 			debug:				false,
 			uploadSucess: 		function () {}
 		};
@@ -1118,7 +1119,7 @@ SWFUpload.Console.writeLine = function (message) {
 					if (defaults.assetType == 'image') {
 						h.append('<div id="item'+a+'" style="float:left; padding:6px; width:'+boxWidth+'px"><div class="imageHolder" style="height:120px; width:'+boxWidth+'px; overflow:hidden;"></div></div>');
 					} else {
-						h.append('<div id="item'+a+'" style="padding:6px;"><span>'+file.name+'</span></div>');	
+						h.append('<div id="item'+a+'" style="padding:6px;"><span>'+file.name+'</span><span class="errors" /></div>');	
 					}
 					
 					// Create the upload elements
@@ -1162,6 +1163,14 @@ SWFUpload.Console.writeLine = function (message) {
 					
 				},
 				uploadSuccess: function(event, file, serverData){
+					// parse the server response to ensure it actually looks valid
+					var resDom = $(serverData);
+					var errors = resDom.find(defaults.errorsSelector)[0];
+
+					// throw errors at user if Matrix threw some at us
+					if (errors) {
+						$('#item'+i+' .errors').append(errors);
+					}
 					
 					if (defaults.debug) $('.log', this).append('<li>'+file.name+' index: '+i+'</li>');
 					
